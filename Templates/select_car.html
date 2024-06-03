@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        .category {
+            margin-bottom: 20px;
+        }
+
+        .category h2 {
+            margin: 0;
+            padding-bottom: 10px;
+            color: #007bff;
+        }
+
+        .dropdown {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown:hover {
+            background-color: #0056b3;
+        }
+
+        .subcategory {
+            display: none;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .car-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .car-info h3 {
+            margin: 0;
+            flex: 1;
+            
+        }
+
+        .car-photo img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: 10px;
+            color: #007bff; /* Change color to blue */
+        }
+
+        .rent-now-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px; /* Increase padding for better appearance */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .rent-now-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Cars for Rent</h1>
+        <div class="category">
+            <h2>Hatchback</h2>
+            <button class="dropdown" onclick="toggleDropdown('hatchback')">Choose</button>
+            <div id="hatchback" class="subcategory">
+                <div class="car-info">
+                    <img src="static/Images/i20.jpg" alt="Car 1" class="car-photo">
+                    <h3>i20 Hyundai</h3>
+                    <span class="price">Price: 150 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('i20 Hyundai', 150)">Rent Now</button>
+                </div>
+                <div class="car-info">
+                    <img src="static/Images/kia.webp" alt="Car 2" class="car-photo">
+                    <h3>Sonet Kia</h3>
+                    <span class="price">Price: 180 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('Sonet Kia', 180)">Rent Now</button>
+                </div>
+                <!-- Add more Hatchback cars here -->
+            </div>
+        </div>
+        <div class="category">
+            <h2>Sedan</h2>
+            <button class="dropdown" onclick="toggleDropdown('sedan')">Choose</button>
+            <div id="sedan" class="subcategory">
+                <div class="car-info">
+                    <img src="static/Images/nexon.jpg" alt="Car 1" class="car-photo">
+                    <h3>Nexon Tata</h3>
+                    <span class="price">Price: 220 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('Nexon Tata', 220)">Rent Now</button>
+                </div>
+                <div class="car-info">
+                    <img src="static/Images/ciaz.png" alt="Car 2" class="car-photo">
+                    <h3>Ciaz Suzuki</h3>
+                    <span class="price">Price: 240 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('Ciaz Suzuki', 240)">Rent Now</button>
+                </div>
+                <!-- Add more Sedan cars here -->
+            </div>
+        </div>
+        <div class="category">
+            <h2>SUV</h2>
+            <button class="dropdown" onclick="toggleDropdown('suv')">Choose</button>
+            <div id="suv" class="subcategory">
+                <div class="car-info">
+                    <img src="static/Images/creta.webp" alt="Car 1" class="car-photo">
+                    <h3>Creta Hyundai</h3>
+                    <span class="price">Price: 300 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('Creta Hyundai', 300)">Rent Now</button>
+                </div>
+                <div class="car-info">
+                    <img src="static/Images/fortuner.jpg" alt="Car 2" class="car-photo">
+                    <h3>Fortuner Toyota</h3>
+                    <span class="price">Price: 350 rupees/hr</span>
+                    <button class="rent-now-btn" onclick="rentNow('Fortuner Toyota', 350)">Rent Now</button>
+                </div>
+                <!-- Add more SUV cars here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleDropdown(category) {
+            var subcategory = document.getElementById(category);
+            if (subcategory.style.display === "none") {
+                subcategory.style.display = "block";
+            } else {
+                subcategory.style.display = "none";
+            }
+        }
+
+        function rentNow(carModel, price) {
+            alert("You have chosen to rent the " + carModel + " at a price of " + price + " rupees per hour.");
+            window.location.href = 'booking?car_model=' + carModel + '&price_per_hour=' + price;
+        }
+    </script>
+</body>
+</html>

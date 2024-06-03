@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #0056b3;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #004085;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #004085;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        input[type="submit"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="file"]:focus,
+        input[type="number"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        input[type="submit"]:active {
+            background-color: #004085;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            color: #999;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            background-color: #fff;
+            padding: 0 5px;
+            font-size: 0.9em;
+            color: #007bff;
+        }
+
+        .form-group input:not(:placeholder-shown) {
+            padding-top: 20px;
+        }
+
+        .flashes {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .flashes li {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        .flashes .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flashes .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>RENT YOUR CAR!</h1>
+    <h2>Enter Details</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" id="name" name="name" required placeholder=" ">
+            <label for="name">Name:</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="age" name="age" required placeholder=" ">
+            <label for="age">Age:</label>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" required placeholder=" ">
+            <label for="email">Email:</label>
+        </div>
+        <div class="form-group">
+            <input type="tel" id="phone" name="phone" required placeholder=" ">
+            <label for="phone">Phone:</label>
+        </div>
+        <div class="form-group">
+            <input type="number" id="rental_hours" name="rental_hours" required placeholder=" ">
+            <label for="rental_hours">Rental Hours:</label>
+        </div>
+        <div class="form-group">
+            <input type="file" id="license" name="license" accept="image/*" required>
+            <label for="license">License Photo:</label>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
