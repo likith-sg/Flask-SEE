@@ -69,6 +69,7 @@
         .car-info h3 {
             margin: 0;
             flex: 1;
+
         }
 
         .car-photo img {
@@ -76,6 +77,16 @@
             max-height: 100px;
             border-radius: 5px;
             margin-right: 10px;
+        }
+        
+        .car-photo.i20 img {
+            max-width: 300px; /* Decreased size for i20 image */
+            max-height: 300px;
+        }
+
+        .car-photo.kia img {
+            max-width: 300px; /* Decreased size for i20 image */
+            max-height: 300px;
         }
 
         .price {
@@ -108,18 +119,21 @@
             <button class="dropdown" onclick="toggleDropdown('hatchback')">Choose</button>
             <div id="hatchback" class="subcategory">
                 <div class="car-info">
-                    <img src="static/Images/i20.jpg" alt="Car 1" class="car-photo">
+                    <div class="car-photo i20">
+                    <img src="{{url_for('static',filename='Images/i20.jpg')}}" alt="Car 1" class="car-photo">
+                   </div>
                     <h3>i20 Hyundai</h3>
                     <span class="price">Price: 150 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('i20 Hyundai', 150)">Rent Now</button>
+                    <button class="rent-now-btn">Rent Now</button>
                 </div>
                 <div class="car-info">
-                    <img src="static/Images/kia.webp" alt="Car 2" class="car-photo">
+                    <div class="car-photo kia">
+                    <img src="{{url_for('static',filename='Images/kia.webp')}}"alt="Car 2" class="car-photo">
+                    </div>
                     <h3>Sonet Kia</h3>
                     <span class="price">Price: 180 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('Sonet Kia', 180)">Rent Now</button>
+                    <button class="rent-now-btn">Rent Now</button>
                 </div>
-                <!-- Add more Hatchback cars here -->
             </div>
         </div>
         <div class="category">
@@ -127,47 +141,102 @@
             <button class="dropdown" onclick="toggleDropdown('sedan')">Choose</button>
             <div id="sedan" class="subcategory">
                 <div class="car-info">
-                    <img src="static/Images/nexon.jpg" alt="Car 1" class="car-photo">
-                    <h3>Nexon Tata</h3>
-                    <span class="price">Price: 220 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('Nexon Tata', 220)">Rent Now</button>
+                    <img src="{{url_for('static',filename='Images/city.jpeg')}}" alt="Car 3" class="car-photo">
+                    <h3>City Honda</h3>
+                    <span class="price">Price: 200 rupees/hr</span>
+                    <button class="rent-now-btn">Rent Now</button>
                 </div>
                 <div class="car-info">
-                    <img src="static/Images/ciaz.png" alt="Car 2" class="car-photo">
-                    <h3>Ciaz Suzuki</h3>
-                    <span class="price">Price: 240 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('Ciaz Suzuki', 240)">Rent Now</button>
+                    <img src="{{url_for('static',filename='Images/verna.jpeg')}}" alt="Car 4" class="car-photo">
+                    <h3>Verna Hyundai</h3>
+                    <span class="price">Price: 220 rupees/hr</span>
+                    <button class="rent-now-btn">Rent Now</button>
                 </div>
-                <!-- Add more Sedan cars here -->
             </div>
         </div>
         <div class="category">
-            <h2>SUV</h2>
-            <button class="dropdown" onclick="toggleDropdown('suv')">Choose</button>
-            <div id="suv" class="subcategory">
-                <div class="car-info">
-                    <img src="static/Images/creta.webp" alt="Car 1" class="car-photo">
-                    <h3>Creta Hyundai</h3>
-                    <span class="price">Price: 300 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('Creta Hyundai', 300)">Rent Now</button>
-                </div>
-                <div class="car-info">
-                    <img src="static/Images/fortuner.jpg" alt="Car 2" class="car-photo">
-                    <h3>Fortuner Toyota</h3>
-                    <span class="price">Price: 350 rupees/hr</span>
-                    <button class="rent-now-btn" onclick="rentNow('Fortuner Toyota', 350)">Rent Now</button>
-                </div>
-                <!-- Add more SUV cars here -->
+          <h2>SUV</h2>
+          <button class="dropdown" onclick="toggleDropdown('SUV')">Choose</button>
+          <div id="SUV" class="subcategory">
+              <div class="car-info">
+                  <img src="{{url_for('static',filename='Images/creta.jpeg')}}"alt="Car 3" class="car-photo">
+                  <h3>Hyundai Creta</h3>
+                  <span class="price">Price: 200 rupees/hr</span>
+                  <button class="rent-now-btn">Rent Now</button>
+              </div>
+              <div class="car-info">
+                  <img src="{{url_for('static',filename='Images/toyoto.jpeg')}}" alt="Car 4" class="car-photo">
+                  <h3>Toyota Fortuner</h3>
+                  <span class="price">Price: 220 rupees/hr</span>
+                  <button class="rent-now-btn">Rent Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+        <h2>Offroad</h2>
+        <button class="dropdown" onclick="toggleDropdown('Offroad')">Choose</button>
+        <div id="Offroad" class="subcategory">
+            <div class="car-info">
+                <img src="{{url_for('static',filename='Images/thar.jpeg')}}" alt="Car 3" class="car-photo">
+                <h3>Mahindra Thar</h3>
+                <span class="price">Price: 200 rupees/hr</span>
+                <button class="rent-now-btn">Rent Now</button>
+            </div>
+            <div class="car-info">
+                <img src="{{url_for('static',filename='Images/compass.jpg')}}" alt="Car 4" class="car-photo">
+                <h3>Jeep wrangler</h3>
+                <span class="price">Price: 220 rupees/hr</span>
+                <button class="rent-now-btn">Rent Now</button>
             </div>
         </div>
     </div>
+
+  <div class="category">
+    <h2>Family</h2>
+    <button class="dropdown" onclick="toggleDropdown('Family')">Choose</button>
+    <div id="Family" class="subcategory">
+        <div class="car-info">
+            <img src="{{url_for('static',filename='Images/innovo.jpeg')}}" alt="Car 3" class="car-photo">
+            <h3>Toyota Innova</h3>
+            <span class="price">Price: 200 rupees/hr</span>
+            <button class="rent-now-btn">Rent Now</button>
+        </div>
+        <div class="car-info">
+            <img src="{{url_for('static',filename='Images/eritiga.jpeg')}}" alt="Car 4" class="car-photo">
+            <h3>Suzuki Ertiga</h3>
+            <span class="price">Price: 220 rupees/hr</span>
+            <button class="rent-now-btn">Rent Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="category">
+  <h2>Luxury</h2>
+  <button class="dropdown" onclick="toggleDropdown('Luxury')">Choose</button>
+  <div id="Luxury" class="subcategory">
+      <div class="car-info">
+          <img src="{{url_for('static',filename='Images/audi.jpeg')}}" alt="Car 3" class="car-photo">
+          <h3>Audi A6</h3>
+          <span class="price">Price: 200 rupees/hr</span>
+          <button class="rent-now-btn">Rent Now</button>
+      </div>
+      <div class="car-info">
+          <img src="{{url_for('static',filename='Images/bmw.jpeg')}}" alt="Car 4" class="car-photo">
+          <h3>BMW 5 Series</h3>
+          <span class="price">Price: 220 rupees/hr</span>
+          <button class="rent-now-btn">Rent Now</button>
+      </div>
+  </div>
+</div>
+    </div>
+
     <script>
-        function toggleDropdown(category) {
-            var subcategory = document.getElementById(category);
-            if (subcategory.style.display === "none") {
-                subcategory.style.display = "block";
+        function toggleDropdown(subcategoryId) {
+            const subcategory = document.getElementById(subcategoryId);
+            if (subcategory.style.display === 'none') {
+                subcategory.style.display = 'block';
             } else {
-                subcategory.style.display = "none";
+                subcategory.style.display = 'none';
             }
         }
 
