@@ -69,7 +69,6 @@
         .car-info h3 {
             margin: 0;
             flex: 1;
-            
         }
 
         .car-photo img {
@@ -173,8 +172,7 @@
         }
 
         function rentNow(carModel, price) {
-            alert("You have chosen to rent the " + carModel + " at a price of " + price + " rupees per hour.");
-            window.location.href = 'booking?car_model=' + carModel + '&price_per_hour=' + price;
+            window.location.href = 'booking?car_model=' + encodeURIComponent(carModel) + '&price_per_hour=' + price;
         }
     </script>
 </body>
