@@ -45,18 +45,13 @@ def booking():
         phone = request.form['phone']
         license = request.files['license']
         
-        # Ensure the uploads directory exists
-        upload_folder = os.path.join('static', 'uploads')
-        os.makedirs(upload_folder, exist_ok=True)
-        
         filename = license.filename
-        license.save(os.path.join(upload_folder, filename))
+        license.save(os.path.join('static/uploads', filename))
         
-        rental_hours = request.form.get('rental_hours')  # Use request.form.get() to avoid KeyError
+        rental_hours = request.form.get('rental_hours')
         if rental_hours is None:
-            # Handle case when rental_hours is not provided
             flash('Rental hours not provided!', 'error')
-            return redirect(url_for('booking', car_model=car_model, price_per_hour=price_per_hour))
+            return redirect(url_for('booking'))
         
         total_cost = int(rental_hours) * float(price_per_hour)
 
@@ -94,7 +89,7 @@ def payment():
 def thank_you():
     return render_template('thankyou.html')
 
-if __name__ == '__main__':
-    if not os.path.exists(DATABASE):
-        init_db()
-    app.run(debug=True)
+
+if not os.path.exists(DATABASE):
+    init_db()
+
